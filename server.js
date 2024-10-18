@@ -28,7 +28,7 @@ const upload = multer({ storage: multer.memoryStorage() }); // Store file in mem
   
 // Set up session middleware
 app.use(session({
-  secret: 'snoofzIsASexyAssMotherfuckerUwUCuteFurryBoiyo!@#!&&#!^^^&*^&*^&*@!^&*^&*!^&@*!^&^@&*!^&*@%&^%#$%!%^$#%^!$^%#&!*&#^&!*(#&(*!@&*(#57648365864893256984632875647832658', // Replace with a strong secret key
+  secret: 'nuhUh', // Replace with a strong secret key
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // Set to true if using HTTPS
