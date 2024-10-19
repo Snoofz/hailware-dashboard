@@ -22,8 +22,8 @@ const verificationCodes = {};
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'calitech.us.inc@gmail.com',
-    pass: 'zekf zcnl dvge uojh',
+    user: '',
+    pass: '',
   },
 });
 
@@ -196,7 +196,7 @@ app.post('/api/register', [
     };
 
     const mailOptions = {
-      from: 'calitech.us.inc@gmail.com',
+      from: '',
       to: email,
       subject: 'Verify Your Email Address',
       html: `
@@ -208,7 +208,6 @@ app.post('/api/register', [
       `,
     };
     
-
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
@@ -363,7 +362,7 @@ function generateResetToken() {
 
 function sendEmail(email, resetUrl) {
   const mailOptions = {
-    from: 'calitech.us.inc@gmail.com',
+    from: '',
     to: email,
     subject: 'Password Reset',
     html: `
