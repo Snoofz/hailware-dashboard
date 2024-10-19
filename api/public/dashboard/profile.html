@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./chunk-2XCF778C.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h2 style="color: #FFF;">Profile</h2>
+        <form id="profileForm" method="POST" enctype="multipart/form-data">
+            <div class="profile-info">
+                <img id="profilePfp" src="" alt="Profile Picture" class="profile-pfp">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="file" id="pfpFile" accept="image/png, image/jpeg" required>
+                <button type="submit" id="updateProfileBtn">Update Profile</button>
+            </div>
+            <div id="messageBox" class="message-box"></div>
+            <div class="dashboard-link">
+                <span style="color: white;">Back to <a style="color: #6e8efb;" href="/dashboard">Dashboard</a></span>
+            </div>
+        </form>
+    </div>
+    <script src="./chunk-8FC22GHX.js"></script>
+</body>
+</html>

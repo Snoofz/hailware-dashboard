@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./chunk-8CF55XX3.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Dashboard</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/dashboard" class="active">Home</a>
+        <a href="/profile" id="profileLink">
+            <span id="profileDisplay"></span>
+        </a>
+        <a href="/settings">Settings</a>
+        <a href="/cmchat">Community Chat</a>
+        <a href="/blfaccountgen">Bullet Force Acc Generator</a>
+        <a href="/ps4jb">PS4 Jailbreak Host</a>
+        <a href="#">PS5 Jailbreak Host</a>
+        <a href="#" id="logoutLink">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1 id="welcomeback-text">Welcome to the Hailware Dashboard</h1>
+        <p>Control Panel Overview</p>
+      </header>
+
+      <section class="control-panels">
+        <div class="panel">
+          <h3>Account Generator Services</h3>
+          <p>• Bullet Force • 15$ Monthly</p>
+          <p>• VRChat (Soon)</p>
+          <p>• Twitch (Soon)</p>
+          <p>• TikTok (Soon)</p>
+          <p>• Gmail (Soon)</p>
+        </div>
+        <div class="panel">
+          <h3>Botting Services</h3>
+          <p>• Twitch Followers</p>
+          <p>• Twitch Live Stream Viewers</p>
+          <p>• Twitch Account Viewers</p>
+          <p>• TikTok Followers</p>
+          <p>• TikTok Views</p>
+          <p>• TikTok Likes</p>
+          <p>• YouTube Subscribers</p>
+          <p>• YouTube Views</p>
+          <p>• YouTube Likes</p>
+          <p>• Kick Followers</p>
+          <p>• Kick Views</p>
+          <p>• Kick Live Stream Viewers</p>
+          <p>• Instagram Followers</p>
+          <p>• Instagram Views</p>
+          <p>• Instagram Likes</p>
+        </div>
+        <div class="panel">
+          <h3>Game Mod Services</h3>
+          <p>• Bullet Force • 25$ Monthly</p>
+          <p>• Black Ops 3 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Black Ops 4 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Modern Warfare 3 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Modern Warfare 2 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• CS:GO 2 • (Not For Sale)</p>
+          <p>• CS:GO • (Not For Sale)</p>
+          <p>• Combat Masters • 15$ Monthly</p>
+          <p>• Forward Assault • 10$ Monthly</p>
+        </div>
+        <div class="panel">
+          <h3>Account Modding Services</h3>
+          <p>• Black Ops 3 (PS4/PS5/PC) (Liquids / Cryptokeys / Stats / Camos / Weapon Bribes / Camo Bribes / Rank / Prestige ) • 15$</p>
+          <p>• Black Ops 4 (PS4/PS5/PC) (Stats / Camos / Rank / Prestige ) • 25$</p>
+          <p>• Bullet Force (PC) (Stats / Camos / Rank / Free Weapon Purchaser / Guns / Unlock All ) • 30$</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <script src="./chunk-99CF433X.js"></script>
+  <script>
+    const fetchUserData = async (username) => {
+      try {
+        const response = await fetch('/api/user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username }),
+        });
+  
+        const data = await response.json();
+  
+        if (data.success) {
+          return { username: data.username, pfp: data.pfp };
+        } else {
+          console.log('User not found:', data.message);
+          return null;
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        return null;
+      }
+    };
+  
+    fetchUserData(localStorage.username).then(userData => {
+      if (userData) {
+        const profileDisplay = document.getElementById('profileDisplay');
+
+        profileDisplay.innerHTML = '';
+
+        const profileImage = document.createElement('img');
+        profileImage.src = `data:image/png;base64,${userData.pfp}`; // Ensure this is correctly formatted
+        profileImage.alt = 'Profile Picture';
+        profileImage.style.width = '25px';
+        profileImage.style.height = '25px';
+        profileImage.style.borderRadius = '50%';
+        profileImage.style.verticalAlign = 'middle';
+
+        const usernameText = document.createTextNode(` ${userData.username} ✎`);
+        
+        profileDisplay.appendChild(profileImage);
+        profileDisplay.appendChild(usernameText);
+
+        localStorage.profilePfp = `data:image/png;base64,${userData.pfp}`;
+      } else {
+        console.log('No user data returned');
+      }
+    }).catch(error => {
+      console.error('Error fetching user data:', error);
+    });
+  </script>
+</body>
+</html>
