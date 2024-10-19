@@ -22,8 +22,8 @@ const verificationCodes = {};
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: '',
-    pass: '',
+    user: 'calitech.us.inc@gmail.com',
+    pass: 'zekf zcnl dvge uojh',
   },
 });
 
@@ -196,7 +196,7 @@ app.post('/api/register', [
     };
 
     const mailOptions = {
-      from: '',
+      from: 'calitech.us.inc@gmail.com',
       to: email,
       subject: 'Verify Your Email Address',
       html: `
@@ -208,6 +208,7 @@ app.post('/api/register', [
       `,
     };
     
+
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
@@ -362,7 +363,7 @@ function generateResetToken() {
 
 function sendEmail(email, resetUrl) {
   const mailOptions = {
-    from: '',
+    from: 'calitech.us.inc@gmail.com',
     to: email,
     subject: 'Password Reset',
     html: `
@@ -400,7 +401,7 @@ app.post('/api/request-password-reset', async (req, res) => {
   user.resetTokenExpiry = resetTokenExpiry;
   await writeDatabase(databaseFilePath, users);
 
-  const resetUrl = `https://finger.hri7566.info/reset-password?token=${resetToken}`;
+  const resetUrl = `https://snoofz.site/reset-password?token=${resetToken}`;
   
   sendEmail(email, resetUrl);
 
