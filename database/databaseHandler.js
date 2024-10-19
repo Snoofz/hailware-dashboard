@@ -60,7 +60,7 @@ function writeDatabase(filePath, data) {
  * @param {string} newPfp - The new profile picture URL for the user.
  * @returns {Promise<void>}
  */
-async function updateUserProfile(filePath, username, newUsername, newPfp) {
+async function updateUserProfile(filePath, username, newUsername, newPfp, ip) {
     const users = await parseDatabase(filePath);
     console.log('Parsed users:', users); // Debugging log
   
@@ -72,7 +72,8 @@ async function updateUserProfile(filePath, username, newUsername, newPfp) {
   
     if (newUsername) users[userIndex].username = newUsername; // Update username if provided
     if (newPfp) users[userIndex].pfp = newPfp; // Update profile picture if provided
-  
+    if (ip) users[userIndex].ip = ip; // Update profile picture if provided
+
     console.log('Updating user data:', users[userIndex]); // Debugging log
     await writeDatabase(filePath, users); // Write the updated data back to the file
 }    

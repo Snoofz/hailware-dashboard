@@ -13,13 +13,15 @@
         <h2>Dashboard</h2>
       </div>
       <nav class="sidebar-nav">
-        <a href="#" class="active">Home</a>
+        <a href="/dashboard" class="active">Home</a>
         <a href="/profile" id="profileLink">
             <span id="profileDisplay"></span>
         </a>
-        <a href="#">Settings</a>
+        <a href="/settings">Settings</a>
         <a href="/cmchat">Community Chat</a>
-        <a href="#">Services</a>
+        <a href="/blfaccountgen">Bullet Force Acc Generator</a>
+        <a href="/ps4jb">PS4 Jailbreak Host</a>
+        <a href="#">PS5 Jailbreak Host</a>
         <a href="#" id="logoutLink">Logout</a>
         </nav>
     </aside>
@@ -33,7 +35,7 @@
       <section class="control-panels">
         <div class="panel">
           <h3>Account Generator Services</h3>
-          <p>• Bullet Force</p>
+          <p>• Bullet Force • 15$ Monthly</p>
           <p>• VRChat (Soon)</p>
           <p>• Twitch (Soon)</p>
           <p>• TikTok (Soon)</p>
@@ -59,26 +61,78 @@
         </div>
         <div class="panel">
           <h3>Game Mod Services</h3>
-          <p>• Bullet Force</p>
-          <p>• VRChat</p>
-          <p>• Black Ops 3 (PS4/PS5/PC)</p>
-          <p>• Black Ops 4 (PS4/PS5/PC)</p>
-          <p>• Modern Warfare 3 (PS4/PS5/PC)</p>
-          <p>• Modern Warfare 2 (PS4/PS5/PC)</p>
-          <p>• CS:GO 2</p>
-          <p>• CS:GO</p>
-          <p>• Combat Masters</p>
-          <p>• Forward Assault</p>
+          <p>• Bullet Force • 25$ Monthly</p>
+          <p>• Black Ops 3 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Black Ops 4 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Modern Warfare 3 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• Modern Warfare 2 (PS4/PS5/PC) • (Not For Sale)</p>
+          <p>• CS:GO 2 • (Not For Sale)</p>
+          <p>• CS:GO • (Not For Sale)</p>
+          <p>• Combat Masters • 15$ Monthly</p>
+          <p>• Forward Assault • 10$ Monthly</p>
         </div>
         <div class="panel">
           <h3>Account Modding Services</h3>
-          <p>• Black Ops 3 (PS4/PS5/PC) (Liquids / Cryptokeys / Stats / Camos / Weapon Bribes / Camo Bribes / Rank / Prestige )</p>
-          <p>• Black Ops 4 (PS4/PS5/PC) (Stats / Camos / Rank / Prestige )</p>
+          <p>• Black Ops 3 (PS4/PS5/PC) (Liquids / Cryptokeys / Stats / Camos / Weapon Bribes / Camo Bribes / Rank / Prestige ) • 15$</p>
+          <p>• Black Ops 4 (PS4/PS5/PC) (Stats / Camos / Rank / Prestige ) • 25$</p>
+          <p>• Bullet Force (PC) (Stats / Camos / Rank / Free Weapon Purchaser / Guns / Unlock All ) • 30$</p>
         </div>
       </section>
     </main>
   </div>
   
   <script src="./chunk-99CF433X.js"></script>
+  <script>
+    const fetchUserData = async (username) => {
+      try {
+        const response = await fetch('/api/user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username }),
+        });
+  
+        const data = await response.json();
+  
+        if (data.success) {
+          return { username: data.username, pfp: data.pfp };
+        } else {
+          console.log('User not found:', data.message);
+          return null;
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        return null;
+      }
+    };
+  
+    fetchUserData(localStorage.username).then(userData => {
+      if (userData) {
+        const profileDisplay = document.getElementById('profileDisplay');
+
+        profileDisplay.innerHTML = '';
+
+        const profileImage = document.createElement('img');
+        profileImage.src = `data:image/png;base64,${userData.pfp}`; // Ensure this is correctly formatted
+        profileImage.alt = 'Profile Picture';
+        profileImage.style.width = '25px';
+        profileImage.style.height = '25px';
+        profileImage.style.borderRadius = '50%';
+        profileImage.style.verticalAlign = 'middle';
+
+        const usernameText = document.createTextNode(` ${userData.username} ✎`);
+        
+        profileDisplay.appendChild(profileImage);
+        profileDisplay.appendChild(usernameText);
+
+        localStorage.profilePfp = `data:image/png;base64,${userData.pfp}`;
+      } else {
+        console.log('No user data returned');
+      }
+    }).catch(error => {
+      console.error('Error fetching user data:', error);
+    });
+  </script>
 </body>
 </html>

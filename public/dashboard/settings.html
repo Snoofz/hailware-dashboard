@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <link rel="stylesheet" href="./styles.css"> <!-- Include your styles here -->
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1c1c1c;
+        }
+
+        /* Style for the checkbox label and input */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            appearance: none; /* Remove default checkbox style */
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            border: 2px solid #6e8efb;
+            border-radius: 4px;
+            background-color: #4a4a4a; /* Default dark mode */
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked {
+            background-color: #6e8efb; /* Fill color when checked */
+            border: 2px solid #5a7ddb;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked::after {
+            content: '✔';
+            position: absolute;
+            top: 0;
+            left: 3px;
+            color: white;
+            font-size: 12px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4a4a4a; /* Default dark mode */
+            color: #ddd;
+            font-size: 16px;
+            appearance: none; /* Remove default dropdown arrow */
+            cursor: pointer;
+        }
+
+        select:hover {
+            background-color: #5a5a5a; /* Slightly lighter color on hover */
+        }
+
+        /* Light mode styles for select elements */
+        .light-mode select {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .light-mode select:hover {
+            background-color: #ccc; /* Slightly lighter color on hover */
+        }
+
+        .settings-container {
+            background: #2e2e2e; /* Default dark mode */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #FFF;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: white;
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: #4a4a4a; /* Default dark mode */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #6e8efb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #5a7ddb;
+        }
+
+        .contrast-mode {
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        .light-mode .settings-container {
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-mode input[type="text"],
+        .light-mode input[type="url"] {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .light-mode button {
+            background-color: #007bff;
+        }
+
+        .light-mode button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            margin-top: 15px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #6e8efb;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h2>Settings</h2>
+        <form id="settingsForm">
+            <div class="contrast-mode">
+                <label for="apiMode">API Endpoint:</label>
+                <select id="apiMode">
+                    <option value="api1">finger.hri7566.info/api</option>
+                    <option value="api2">api.hailware.net</option>
+                </select>
+
+                <label for="downloadMode">Download Server:</label>
+                <select id="downloadMode">
+                    <option value="dl1">finger.hri7566.info/dl</option>
+                    <option value="dl2">dl.hailware.net</option>
+                </select>
+
+                <label for="socketServerMode">Websocket Server:</label>
+                <select id="socketServerMode">
+                    <option value="serv1">wss://finger.hri7566.info</option>
+                    <option value="serv2">wss://dl.hailware.net</option>
+                </select>
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="hideUsername">
+                Hide Username From Others
+            </label>        
+            
+            <label class="checkbox-label">
+                <input type="checkbox" id="hidePfp">
+                Hide PFP From Others
+            </label> 
+
+            <button type="submit">Save Settings</button>
+        </form>
+        <a href="/dashboard" class="back-link">Back to Dashboard</a>
+    </div>
+
+    <script>
+        // Handle settings form submission
+        document.getElementById('settingsForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            location.reload();
+        });
+    </script>
+</body>
+</html>

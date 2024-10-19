@@ -1,1 +1,23 @@
-button,h2{color:#fff}body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background-color:#1c1c1c;margin:0}.register-container{background:#2e2e2e;padding:40px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.3);max-width:400px;width:100%;text-align:center;position:relative;animation:.6s ease-out slideIn}@keyframes slideIn{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}h2{margin-bottom:20px;font-size:24px}input[type=email],input[type=password],input[type=text]{width:90%;padding:14px;margin:12px 0;border-radius:8px;border:none;background-color:#3a3a3a;color:#ddd;font-size:16px;transition:background-color .3s,box-shadow .3s;box-shadow:inset 0 0 5px rgba(0,0,0,.5)}input[type=email]::placeholder,input[type=password]::placeholder,input[type=text]::placeholder{color:#888}input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{background-color:#494949;outline:0;box-shadow:0 0 5px 1px #6e8efb}button{width:100%;padding:12px;background-color:#6e8efb;border:none;border-radius:8px;font-size:18px;cursor:pointer;transition:background-color .3s}button:hover{background-color:#5a7ddb}.message-box{display:none;margin:15px 0;padding:12px;border-radius:8px;font-size:16px;text-align:center;animation:.5s fadeIn}.message-box.success{background-color:#d4edda;color:#155724;border:1px solid #c3e6cb}.login-link{margin-top:15px;text-align:center}.message-box.error{background-color:#f8d7da;color:#721c24;border:1px solid #f5c6cb}.message-box.warning{background-color:#fff3cd;color:#856404;border:1px solid #ffeeba}@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+button,h2{color:#fff}body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background-color:#1c1c1c;margin:0}.register-container{background:#2e2e2e;padding:40px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.3);max-width:400px;width:100%;text-align:center;position:relative;animation:.6s ease-out slideIn}@keyframes slideIn{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}h2{margin-bottom:20px;font-size:24px}input[type=email],input[type=password],input[type=text]{width:90%;padding:14px;margin:12px 0;border-radius:8px;border:none;background-color:#3a3a3a;color:#ddd;font-size:16px;transition:background-color .3s,box-shadow .3s;box-shadow:inset 0 0 5px rgba(0,0,0,.5)}input[type=email]::placeholder,input[type=password]::placeholder,input[type=text]::placeholder{color:#888}input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{background-color:#494949;outline:0;box-shadow:0 0 5px 1px #6e8efb}button{width:100%;padding:12px;background-color:#6e8efb;border:none;border-radius:8px;font-size:18px;cursor:pointer;transition:background-color .3s}button:hover{background-color:#5a7ddb}.message-box{display:none;margin:15px 0;padding:12px;border-radius:8px;font-size:16px;text-align:center;animation:.5s fadeIn}.message-box.success{background-color:#d4edda;color:#155724;border:1px solid #c3e6cb}.login-link{margin-top:15px;text-align:center}.message-box.error{background-color:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+.message-box {
+    margin: 10px 0; /* Space around the message box */
+    padding: 10px; /* Inner spacing */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    display: none; /* Initially hidden */
+  }
+  
+  .message-box.visible {
+    display: block; /* Show the message box when needed */
+  }
+  
+  .message-box.success {
+    background-color: rgba(110, 142, 251, 0.1); /* Light blue background for success messages */
+    color: #6e8efb; /* Text color for success messages */
+  }
+  
+  .message-box.error {
+    background-color: rgba(255, 77, 77, 0.1); /* Light red background for error messages */
+    color: #ff4d4d; /* Text color for error messages */
+  }  
+.message-box.warning{background-color:#fff3cd;color:#856404;border:1px solid #ffeeba}@keyframes fadeIn{from{opacity:0}to{opacity:1}}
