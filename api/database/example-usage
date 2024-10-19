@@ -1,0 +1,20 @@
+// Example usage
+const databaseFilePath = path.join(__dirname, 'data.database.snof');
+
+// Read and parse the database file
+parseDatabase(databaseFilePath)
+  .then(data => {
+    console.log('Parsed Data:', data);
+
+    // Modify the data or add a new entry
+    data.push({ username: 'newuser', password: 'newpass', email: 'newuser@example.com' });
+
+    // Write the updated data back to the database file
+    return writeDatabase(databaseFilePath, data);
+  })
+  .then(() => {
+    console.log('Database successfully updated!');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
